@@ -3,6 +3,7 @@
 namespace Realestate\MssqlBundle\Schema;
 
 use Doctrine\DBAL\Schema\SQLServerSchemaManager;
+use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 
 /**
  * Schema manager for the MsSql/Dblib RDBMS.
