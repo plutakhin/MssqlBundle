@@ -66,8 +66,8 @@ class Driver implements \Doctrine\DBAL\Driver
 
     /**
      * Constructs the Dblib PDO DSN.
-     *
-     * @return string  The DSN.
+     * @param array $params
+     * @return string the DSN.
      */
     private function _constructPdoDsn(array $params)
     {
