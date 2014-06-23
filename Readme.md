@@ -37,18 +37,16 @@ In app/AppKernel.php registerBundles(), add the following line:
     );
 
 *************************
-In Doctrine\DBAL\DriverManager's $_driverMap property, add this driver to the list:
-
-    'pdo_dblib' => 'Realestate\DBAL\Driver\PDODblib\Driver',
-
-
-*************************
 This driver requires version 8.0 (from http://www.ubuntitis.com/?p=64) as default 4.2 version does not have UTF support
 
-In /etc/freetds/freetds.conf, change
-tds version = 4.2
-to
-tds version = 8.0
+An example of freetds.conf (/etc/freetds/freetds.conf) is:
+
+    [mssql_server]
+        host = xxx.xxx.xxx.xxx
+        port = 1433
+        tds version = 8.0
+        client charset = UTF-8
+        text size = 20971520
 
 ************************
 can't use nvarchar!!
