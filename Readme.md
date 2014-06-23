@@ -15,10 +15,17 @@ Add to section doctrine - dbal in **config.yml** option **driver_class**
 
     doctrine:
         dbal:
-            driver:         %database_driver%
             driver_class:   \Realestate\MssqlBundle\Driver\PDODblib\Driver
+            host: %database_host%
+            user: %database_user%
+            password: %database_password%
+            # options:
+            #    ansi_nulls: on
+            #    ansi_warnings: on
 
-make sure your %database_driver% is set to pdo_dblib
+The %database_driver% must not be set, neither the %charset% parameter, as for stackoverflow.com/questions/8492941/doctrine-2-how-to-add-custom-dbal-driver#answer-8731924
+
+The connection options (ansi_nulls and ansi_warnings) may be configured for MSSQL to ON|OFF
 
 *************************
 In app/AppKernel.php registerBundles(), add the following line:

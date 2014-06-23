@@ -41,8 +41,27 @@ class Driver implements \Doctrine\DBAL\Driver
                 $driverOptions
             );
         }
-        
+
+        $this->handleInit($conn, $driverOptions);
+
         return $conn;
+    }
+
+    /**
+     * @param Connection $connection
+     * @param array $options
+     */
+    protected function handleInit(Connection $connection, array $options = array()) {
+        $availableOptions = array(
+            'ansi_nulls',
+            'ansi_warnings'
+        );
+
+        $options = array_intersect_key($options, array_flip($availableOptions));
+
+        foreach($options as $key => $value) {
+            $connection->exec('SET ' . strtoupper($key) . ' ' . strtoupper($value));
+        }
     }
 
     /**
