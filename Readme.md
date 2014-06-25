@@ -15,10 +15,17 @@ Add to section doctrine - dbal in **config.yml** option **driver_class**
 
     doctrine:
         dbal:
-            driver:         %database_driver%
             driver_class:   \Realestate\MssqlBundle\Driver\PDODblib\Driver
+            host: %database_host%
+            user: %database_user%
+            password: %database_password%
+            # options:
+            #    ansi_nulls: on
+            #    ansi_warnings: on
 
-make sure your %database_driver% is set to pdo_dblib
+The %database_driver% must not be set, neither the %charset% parameter, as for stackoverflow.com/questions/8492941/doctrine-2-how-to-add-custom-dbal-driver#answer-8731924
+
+The connection options (ansi_nulls and ansi_warnings) may be configured for MSSQL to ON|OFF
 
 *************************
 In app/AppKernel.php registerBundles(), add the following line:
@@ -30,18 +37,16 @@ In app/AppKernel.php registerBundles(), add the following line:
     );
 
 *************************
-In Doctrine\DBAL\DriverManager's $_driverMap property, add this driver to the list:
-
-    'pdo_dblib' => 'Realestate\DBAL\Driver\PDODblib\Driver',
-
-
-*************************
 This driver requires version 8.0 (from http://www.ubuntitis.com/?p=64) as default 4.2 version does not have UTF support
 
-In /etc/freetds/freetds.conf, change
-tds version = 4.2
-to
-tds version = 8.0
+An example of freetds.conf (/etc/freetds/freetds.conf) is:
+
+    [mssql_server]
+        host = xxx.xxx.xxx.xxx
+        port = 1433
+        tds version = 8.0
+        client charset = UTF-8
+        text size = 20971520
 
 ************************
 can't use nvarchar!!

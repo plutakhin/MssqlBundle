@@ -8,7 +8,12 @@
         {
             "name": "Vitaly Zhloba",
             "email": "vitaly.zhloba@gmail.com"
+        },
+        {
+            "name": "Emanuele Panzeri - ThePanz",
+            "email": "thepanz@gmail.com"
         }
+
     ],
     "require": {},
     "autoload": {
