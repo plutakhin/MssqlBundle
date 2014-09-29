@@ -1,5 +1,5 @@
 {
-    "name": "isoft/mssql-bundle",
+    "name": "plutakhin/mssql-bundle",
     "description": "Driver for work with MsSQL server",
     "authors": [
         {
