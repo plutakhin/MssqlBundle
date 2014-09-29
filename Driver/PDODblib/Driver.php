@@ -12,6 +12,7 @@
 
 namespace Realestate\MssqlBundle\Driver\PDODblib;
 use Realestate\MssqlBundle\Platforms\DblibPlatform;
+use Doctrine\DBAL\Driver\Connection as ConnectionInterface;
 
 class Driver implements \Doctrine\DBAL\Driver
 {
@@ -51,7 +52,7 @@ class Driver implements \Doctrine\DBAL\Driver
      * @param Connection $connection
      * @param array $options
      */
-    protected function handleInit(Connection $connection, array $options = array()) {
+    protected function handleInit(ConnectionInterface $connection, array $options = array()) {
         $availableOptions = array(
             'ansi_nulls',
             'ansi_warnings'
